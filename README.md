@@ -48,11 +48,9 @@ This project is a skeleton project for querying data from the [HAPI FHIR public 
 
 ### Coverage
 
-=============================== Coverage summary ===============================
 Statements   : 98.44% ( 63/64 )
 Branches     : 85.71% ( 12/14 )
 Functions    : 92.31% ( 24/26 )
 Lines        : 98.15% ( 53/54 )
-================================================================================
 
 
