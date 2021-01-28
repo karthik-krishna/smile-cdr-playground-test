@@ -10,6 +10,7 @@
             </div>
         </ng-container>
       </div>
+      <div class="required" *ngIf="errMessage">{{errMessage}}</div>
       <div class="form-row">
         <button class="btn btn-success" type="submit" [disabled]="!form.valid">Save</button>
         <button class="btn btn-secondary ml-10" type="reset">Reset</button>

@@ -14,6 +14,7 @@ export class DynamicFormComponent implements OnInit, OnChanges {
     item:[]
   };
   form: FormGroup;
+  errMessage: string;
   
 
   constructor(private qcs: QuestionControlService) { }
@@ -29,36 +30,41 @@ export class DynamicFormComponent implements OnInit, OnChanges {
   }
 
   onSubmit() {
-    const item =[];
-    this.questions.item.forEach(element => {
-      if(element.type!=='group') {
-        for (let answerid in this.form.getRawValue()) {
-          if(element.linkId==answerid){
-            element.answer= this.form.getRawValue()[answerid];
-          }
-        }
-      }else {
-        element.item.forEach(innerElem => {
+    this.errMessage = null;
+    const now = Number(new Date());
+    if(Number(new Date(this.form.controls[2.2].value))<now) {
+      this.questions.item.forEach(element => {
+        if(element.type!=='group') {
           for (let answerid in this.form.getRawValue()) {
-            if(innerElem.linkId==answerid){
-              innerElem.answer = this.form.getRawValue()[answerid];
+            if(element.linkId==answerid){
+              element.answer= this.form.getRawValue()[answerid];
             }
           }
-        })
-      }
-    });
+        }else {
+          element.item.forEach(innerElem => {
+            for (let answerid in this.form.getRawValue()) {
+              if(innerElem.linkId==answerid){
+                innerElem.answer = this.form.getRawValue()[answerid];
+              }
+            }
+          })
+        }
+      });
 
-    let response = {
-      id:Number(new Date()),
-      status:'completed',
-      authored:new Date(),
-      author:'Patient',
-      subject:'Patient',
-      source:'Patient',
-      item:[...this.questions.item]
+      let response = {
+        id:now,
+        status:'completed',
+        authored:new Date(),
+        author:'Patient',
+        subject:'Patient',
+        source:'Patient',
+        item:[...this.questions.item]
+      }
+      this.addResponse.emit(response);
+      this.form.reset();
+    }else {
+      this.errMessage = `Date should be lesser than or equal to today's date`;
     }
-    this.addResponse.emit(response);
-    this.form.reset();
   }
 
 }

@@ -22,4 +22,9 @@ describe('QuestionComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('format max date', () => {
+    expect(component.maxDate()).toBeDefined();
+  });
+
 });

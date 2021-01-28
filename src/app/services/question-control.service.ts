@@ -12,11 +12,11 @@ export class QuestionControlService {
     const group: any = {};
     questions.forEach(question => {
       if(question.type !=='group') {
-        group[question.linkId] = question.type=='boolean' ? new FormControl('', Validators.required)
+        group[question.linkId] = question.type=='date' ? new FormControl('', [Validators.required])
                                               : new FormControl('',Validators.required);
       } else {
         question.item.forEach(question => {
-          group[question.linkId] = question.type=='boolean' ? new FormControl('', Validators.required)
+          group[question.linkId] = question.type=='date' ? new FormControl('', Validators.required)
                                               : new FormControl('', Validators.required);
         });
       }

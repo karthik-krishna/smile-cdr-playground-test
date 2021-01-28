@@ -21,7 +21,16 @@ export class QuestionnaireComponent implements OnInit {
 
   addItem(newItem: any) {
     this.responseArr.push(newItem);
-    console.log(this.responseArr)
+    this.responseArr.reverse();
+    console.log(this.responseArr);
+    setTimeout(() => {
+      window.scroll({
+        top: 300,
+        left: 0,
+        behavior: 'smooth'
+      });
+    }, 300);
+    
   }
 
 }

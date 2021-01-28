@@ -1,5 +1,5 @@
 <div *ngIf="form" [formGroup]="form">
-    <label [attr.for]="question.linkId">{{question.text}}</label>
+    <label [attr.for]="question.linkId">{{question.text}} <span class="required">*</span></label>
   
     <div [ngSwitch]="question.type">
         <!-- <input *ngSwitchCase="'boolean'" [formControlName]="question.linkId" [id]="question.linkId" [type]="'checkbox'"> -->
@@ -8,6 +8,6 @@
             <label class="radio-inline"><input type="radio" [formControlName]="question.linkId" value="true"> Yes </label>
         </div>
         <input *ngSwitchCase="'string'" [formControlName]="question.linkId" [id]="question.linkId" [type]="'text'" class="form-control">
-        <input *ngSwitchCase="'date'" [formControlName]="question.linkId" [id]="question.linkId" [type]="'date'" [max]="maxDate" class="form-control">
+        <input *ngSwitchCase="'date'" [formControlName]="question.linkId" [id]="question.linkId" [type]="'date'" [max]="maxDate()" class="form-control">
     </div>
 </div>
