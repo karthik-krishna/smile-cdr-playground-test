@@ -24,15 +24,22 @@ describe('AppComponent', () => {
     expect(app.title).toEqual('fhir-app-test');
   });
 
-  it("should scroll to top of the page", function() {
+  it(` ngoninit should exist`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
+    app.ngOnInit();
+    expect(app.ngOnInit).toBeDefined()
+  });
 
+  it("should scroll to top of the page on route change", function() {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.componentInstance;
+    
     var expectedY = 0;
     var expectedX = 0;
 
     // scroll the window
-    window.scrollTo(0, 0);
+    app.onActivate();
     var actualY = window.pageYOffset;
     var actualX = window.pageXOffset;
 

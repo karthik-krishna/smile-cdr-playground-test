@@ -1,5 +1,8 @@
 import { Component, Input, OnChanges, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormGroup } from '@angular/forms';
+import { IItem } from 'src/app/Interface/IItem';
+import { IQuestion } from 'src/app/Interface/IQuestionnaire';
+import { IResponse } from 'src/app/Interface/IResponse';
 import { QuestionControlService } from 'src/app/services/question-control.service';
 
 @Component({
@@ -9,12 +12,11 @@ import { QuestionControlService } from 'src/app/services/question-control.servic
 })
 export class DynamicFormComponent implements OnInit, OnChanges {
 
-  @Output() addResponse = new EventEmitter<any>();
-  @Input() questions: any= {
-    item:[]
-  };
+  @Output() addResponse = new EventEmitter<IResponse>();
+  @Input() questions: IQuestion | IItem;
   form: FormGroup;
   errMessage: string;
+  items: any;
   
 
   constructor(private qcs: QuestionControlService) { }
@@ -33,7 +35,8 @@ export class DynamicFormComponent implements OnInit, OnChanges {
     this.errMessage = null;
     const now = Number(new Date());
     if(Number(new Date(this.form.controls[2.2].value))<now) {
-      this.questions.item.forEach(element => {
+      this.items = JSON.parse(JSON.stringify(this.questions));
+      this.items.item.forEach(element => {
         if(element.type!=='group') {
           for (let answerid in this.form.getRawValue()) {
             if(element.linkId==answerid){
@@ -53,12 +56,12 @@ export class DynamicFormComponent implements OnInit, OnChanges {
 
       let response = {
         id:now,
-        status:'completed',
+        status:'active',
         authored:new Date(),
         author:'Patient',
         subject:'Patient',
         source:'Patient',
-        item:[...this.questions.item]
+        item:[].concat([...this.items.item])
       }
       this.addResponse.emit(response);
       this.form.reset();

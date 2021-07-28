@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { IResponse } from 'src/app/Interface/IResponse';
 
 @Component({
   selector: 'app-response',
@@ -7,7 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class ResponseComponent implements OnInit {
 
-  @Input() response:any;
+  @Input() response:IResponse;
 
   constructor() { }
 

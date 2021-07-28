@@ -8,6 +8,6 @@
             <label class="radio-inline"><input type="radio" [formControlName]="question.linkId" value="true"> Yes </label>
         </div>
         <input *ngSwitchCase="'string'" [formControlName]="question.linkId" [id]="question.linkId" [type]="'text'" class="form-control">
-        <input *ngSwitchCase="'date'" [formControlName]="question.linkId" [id]="question.linkId" [type]="'date'" [max]="maxDate()" class="form-control">
+        <input *ngSwitchCase="'date'" [formControlName]="question.linkId" [id]="question.linkId" [type]="'date'" [max]="maxDate(now)" class="form-control">
     </div>
 </div>

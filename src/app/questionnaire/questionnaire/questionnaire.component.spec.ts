@@ -1,6 +1,5 @@
 import { HttpClientModule } from '@angular/common/http';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { QuestionnaireComponent } from './questionnaire.component';
 
 describe('QuestionnaireComponent', () => {
@@ -91,13 +90,19 @@ describe('QuestionnaireComponent', () => {
       ]
     }
     const responseArrLength = component.responseArr.length;
+    const expectedY = 300;
+    const actualY = window.pageYOffset;
+    jasmine.clock().install();
     component.addItem(response);
-    expect(component.responseArr.length).toBe(responseArrLength+1)
+    expect(component.responseArr.length).toBe(responseArrLength+1);
+    jasmine.clock().tick(301);
+    jasmine.clock().uninstall();
   });
 
   it('should get questionnaire from api on init', () => {
     component.ngOnInit();
     expect(component.questions$).toBeDefined();
   });
+  
 
 });

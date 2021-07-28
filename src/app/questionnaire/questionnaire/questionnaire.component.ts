@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/services/api-service.service';
-import { FormBuilder } from '@angular/forms';
+import { IResponse } from 'src/app/Interface/IResponse';
+import { Observable } from 'rxjs';
+import { IQuestion } from 'src/app/Interface/IQuestionnaire';
 
 @Component({
   selector: 'app-questionnaire',
@@ -8,8 +10,8 @@ import { FormBuilder } from '@angular/forms';
   styleUrls: ['./questionnaire.component.scss']
 })
 export class QuestionnaireComponent implements OnInit {
-  questions$: any;
-  responseArr: Array<Object>=[];
+  questions$: Observable<Object>;
+  responseArr: Array<IResponse>=[];
 
   constructor(
     private apiService: ApiService
@@ -19,10 +21,9 @@ export class QuestionnaireComponent implements OnInit {
     this.questions$ = this.apiService.getQuestions();
   }
 
-  addItem(newItem: any) {
+  addItem(newItem) {
     this.responseArr.push(newItem);
     this.responseArr.reverse();
-    console.log(this.responseArr);
     setTimeout(() => {
       window.scroll({
         top: 300,

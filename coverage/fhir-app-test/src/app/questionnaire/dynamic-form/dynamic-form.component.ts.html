@@ -24,14 +24,14 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>21/21</span>
+                <span class='fraction'>25/25</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">87.5% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>7/8</span>
+                <span class='fraction'>10/10</span>
             </div>
         
             
@@ -45,7 +45,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>18/18</span>
+                <span class='fraction'>23/23</span>
             </div>
         
             
@@ -120,7 +120,19 @@
 <a name='L62'></a><a href='#L62'>62</a>
 <a name='L63'></a><a href='#L63'>63</a>
 <a name='L64'></a><a href='#L64'>64</a>
-<a name='L65'></a><a href='#L65'>65</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L65'></a><a href='#L65'>65</a>
+<a name='L66'></a><a href='#L66'>66</a>
+<a name='L67'></a><a href='#L67'>67</a>
+<a name='L68'></a><a href='#L68'>68</a>
+<a name='L69'></a><a href='#L69'>69</a>
+<a name='L70'></a><a href='#L70'>70</a>
+<a name='L71'></a><a href='#L71'>71</a>
+<a name='L72'></a><a href='#L72'>72</a>
+<a name='L73'></a><a href='#L73'>73</a>
+<a name='L74'></a><a href='#L74'>74</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -131,26 +143,29 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">3x</span>
@@ -180,12 +195,18 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { Component, Input, OnChanges, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormGroup } from '@angular/forms';
+import { IItem } from 'src/app/Interface/IItem';
+import { IQuestion } from 'src/app/Interface/IQuestionnaire';
+import { IResponse } from 'src/app/Interface/IResponse';
 import { QuestionControlService } from 'src/app/services/question-control.service';
 &nbsp;
 @Component({
@@ -195,17 +216,17 @@ import { QuestionControlService } from 'src/app/services/question-control.servic
 })
 export class DynamicFormComponent implements OnInit, OnChanges {
 &nbsp;
-  @Output() addResponse = new EventEmitter&lt;any&gt;();
-  @Input() questions: any= {
-    item:[]
-  };
+  @Output() addResponse = new EventEmitter&lt;IResponse&gt;();
+  @Input() questions: IQuestion | IItem;
   form: FormGroup;
+  errMessage: string;
+  items: any;
   
 &nbsp;
   constructor(private qcs: QuestionControlService) { }
 &nbsp;
   ngOnChanges() {
-    <span class="missing-if-branch" title="else path not taken" >E</span>if(this.questions) {
+    if(this.questions) {
       this.form = this.qcs.toFormGroup(this.questions.item);
     }
   }
@@ -215,36 +236,42 @@ export class DynamicFormComponent implements OnInit, OnChanges {
   }
 &nbsp;
   onSubmit() {
-    const item =[];
-    this.questions.item.forEach(element =&gt; {
-      if(element.type!=='group') {
-        for (let answerid in this.form.getRawValue()) {
-          if(element.linkId==answerid){
-            element.answer= this.form.getRawValue()[answerid];
-          }
-        }
-      }else {
-        element.item.forEach(innerElem =&gt; {
+    this.errMessage = null;
+    const now = Number(new Date());
+    if(Number(new Date(this.form.controls[2.2].value))&lt;now) {
+      this.items = JSON.parse(JSON.stringify(this.questions));
+      this.items.item.forEach(element =&gt; {
+        if(element.type!=='group') {
           for (let answerid in this.form.getRawValue()) {
-            if(innerElem.linkId==answerid){
-              innerElem.answer = this.form.getRawValue()[answerid];
+            if(element.linkId==answerid){
+              element.answer= this.form.getRawValue()[answerid];
             }
           }
-        })
+        }else {
+          element.item.forEach(innerElem =&gt; {
+            for (let answerid in this.form.getRawValue()) {
+              if(innerElem.linkId==answerid){
+                innerElem.answer = this.form.getRawValue()[answerid];
+              }
+            }
+          })
+        }
+      });
+&nbsp;
+      let response = {
+        id:now,
+        status:'active',
+        authored:new Date(),
+        author:'Patient',
+        subject:'Patient',
+        source:'Patient',
+        item:[].concat([...this.items.item])
       }
-    });
-&nbsp;
-    let response = {
-      id:Number(new Date()),
-      status:'completed',
-      authored:new Date(),
-      author:'Patient',
-      subject:'Patient',
-      source:'Patient',
-      item:[...this.questions.item]
+      this.addResponse.emit(response);
+      this.form.reset();
+    }else {
+      this.errMessage = `Date should be lesser than or equal to today's date`;
     }
-    this.addResponse.emit(response);
-&nbsp;
   }
 &nbsp;
 }
@@ -255,7 +282,7 @@ export class DynamicFormComponent implements OnInit, OnChanges {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Wed Jan 27 2021 23:25:19 GMT-0800 (Pacific Standard Time)
+                at Tue Jul 27 2021 18:18:37 GMT-0700 (Pacific Daylight Time)
             </div>
         </div>
         <script src="..\..\..\..\prettify.js"></script>
